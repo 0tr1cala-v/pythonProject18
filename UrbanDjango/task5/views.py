@@ -19,17 +19,17 @@ def sign_up_by_django(request):
 
             if password != repeat_password:
                 info['error'] = "Пароли не совпадают"
-                return HttpResponse('Пароли не совпадают')
+#                return HttpResponse('Пароли не совпадают')
             elif age < 18:
                 info['error'] = "Вы должны быть старше 18"
-                return HttpResponse('Вы должны быть старше 18')
+#                return HttpResponse('Вы должны быть старше 18')
             elif username in users:
                 info['error'] = "Пользователь уже существует"
-                return HttpResponse('Пользователь уже существует')
+#                return HttpResponse('Пользователь уже существует')
             else:
                 info['welcome_message'] = f"Приветствуем, {username}!"
                 users.append(username)
-            return HttpResponse(f"Приветствуем, {username}!")
+                return HttpResponse(f"Приветствуем, {username}!")
         else:
             form = UserRegister()
             info['message'] = form
@@ -48,16 +48,16 @@ def sign_up_by_html(request):
 
         if password != repeat_password:
             info['error'] = "Пароли не совпадают"
-            return HttpResponse('Пароли не совпадают')
+#            return HttpResponse('Пароли не совпадают')
         elif age < 18:
             info['error'] = "Вы должны быть старше 18"
-            return HttpResponse('Вы должны быть старше 18')
+#            return HttpResponse('Вы должны быть старше 18')
         elif username in users:
             info['error'] = "Пользователь уже существует"
-            return HttpResponse('Пользователь уже существует')
+#            return HttpResponse('Пользователь уже существует')
         else:
             info['welcome_message'] = f"Приветствуем, {username}!"  # Приветственное сообщение
             users.append(username)
-        return HttpResponse(f"Приветствуем, {username}!")
+            return HttpResponse(f"Приветствуем, {username}!")
 
     return render(request, 'fifth_task/registration_page.html', context=info)
